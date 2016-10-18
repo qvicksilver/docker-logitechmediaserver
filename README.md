@@ -23,5 +23,5 @@ With persistent data on host:
                -v <log-dir>:/var/log/squeezeboxserver \
                qvicksilver/logitechmediaserver <uid>
 
-Where <uid> matches the uid of a user on the host with write permissions
-on the <data-dir> and <log-dir> directories.
+Where `<uid>` matches the uid of a user on the host with write permissions
+on the `<data-dir>` and `<log-dir>` directories.
