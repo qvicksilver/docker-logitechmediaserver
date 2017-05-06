@@ -25,3 +25,15 @@ With persistent data on host:
 
 Where `<uid>` matches the uid of a user on the host with write permissions
 on the `<data-dir>` and `<log-dir>` directories.
+
+If you wish to specify a timezone for the server, set the TZ environment
+variable to a valid timezone:
+
+    docker run -d \
+               -e TZ=Europe/Stockholm
+               -p 9000:9000 \
+               -p 3483:3483 \
+               -p 3483:3483/udp \
+               -v <audio-dir>:<somewhere-in-container> \
+               qvicksilver/logitechmediaserver
+
