@@ -14,6 +14,8 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get -y install \
       perl \
       sox \
       wget \
+      libio-socket-ssl-perl \
+      libnet-ssleay-perl \
     && \
     rm -rf /var/lib/apt/lists/* && \
     download_url=$(curl -Lsf "$update_url") && \
