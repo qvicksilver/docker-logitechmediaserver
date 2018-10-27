@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:stretch
 MAINTAINER Jonathan Süssemilch Poulain <jonathan@sofiero.net>
 
 SHELL [ "/bin/bash", "-c" ]
