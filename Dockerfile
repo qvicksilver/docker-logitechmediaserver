@@ -4,7 +4,7 @@ MAINTAINER Jonathan Süssemilch Poulain <jonathan@sofiero.net>
 SHELL [ "/bin/bash", "-c" ]
 
 ENV LANG=C.UTF-8 \
-    update_url="http://www.mysqueezebox.com/update/?version=7.9.0&revision=1&geturl=1&os=deb"
+    base_url="http://downloads.slimdevices.com/nightly/"
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get -y install \
       curl \
@@ -18,9 +18,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get update && apt-get -y install \
       libnet-ssleay-perl \
     && \
     rm -rf /var/lib/apt/lists/* && \
-    download_url=$(curl -Lsf "$update_url") && \
-    download_url=${download_url/_all/_amd64} && \
-    curl -Lsf -o /tmp/logitechmediaserver.deb $download_url && \
+    curl -Lsf -o /tmp/logitechmediaserver.deb "${base_url}"$(curl -Lsf "${base_url}index.php?ver=7.9" | awk -F'"' '/_amd64.deb/ { print $2}') && \
     DEBIAN_FRONTEND=noninteractive dpkg -i /tmp/logitechmediaserver.deb && \
     rm -f /tmp/logitechmediaserver.deb
 
